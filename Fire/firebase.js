@@ -31,3 +31,11 @@ addDoc(collection(db, 'task'), {title, description})
 }
 
 export const getTask =()=> getDocs(collection(db, 'task'))
+
+export const onGetTasks =(callback)=>onSnapshot(collection(db, 'task'),callback)
+
+export const deleteTask = id => deleteDoc(doc(db, 'task', id))
+
+export const getTaskById = id => getDoc(doc(db, 'task', id))
+
+export const updateTask = (id, newFields) => updateDoc(doc(db, 'task', id), newFields)
