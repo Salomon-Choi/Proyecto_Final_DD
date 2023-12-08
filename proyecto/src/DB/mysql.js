@@ -71,6 +71,14 @@ function agregar(tabla, data){
     }) 
 }
 
+function modificar(tabla, data){
+    return new Promise ((resolve, reject)=>{
+        conexion.query(`INSERT INTO ${tabla} SET ? ON DUPLICATE KEY UPDATE ?`, [data,data] , (error,result)=>{
+            if(error) return reject(error);
+            resolve(result);
+        })
+    }) 
+}
 
 
 function eliminar(tabla,data){
@@ -100,4 +108,5 @@ module.exports ={
     eliminar,
     query,
     porcategoria,
+    modificar,
 }

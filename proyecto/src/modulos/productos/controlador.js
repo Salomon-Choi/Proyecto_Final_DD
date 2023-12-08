@@ -29,11 +29,17 @@ module.exports = function(dbInyectada){
         return db.agregar(TABLA, body);
     }
 
+
+    function modificar(body){
+        return db.modificar(TABLA, body);
+    }
+
     return{
         todos,
         uno,
         agregar,
         eliminar,
         porcategoria,
+        modificar,
     }
 }
