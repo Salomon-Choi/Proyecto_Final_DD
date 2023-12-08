@@ -44,6 +44,15 @@ function todos(tabla){
     })
 }
 
+function porcategoria(tabla, categoria){
+    return new Promise ((resolve, reject)=>{
+        conexion.query(`SELECT * FROM ${tabla} WHERE categoria=${categoria}`, (error,result)=>{
+            if(error) return reject(error);
+            resolve(result);
+        })
+    })
+}
+
 function uno(tabla, id){
     return new Promise ((resolve, reject)=>{
         conexion.query(`SELECT * FROM ${tabla} WHERE ID=${id}`, (error,result)=>{
@@ -90,4 +99,5 @@ module.exports ={
     agregar,
     eliminar,
     query,
+    porcategoria,
 }

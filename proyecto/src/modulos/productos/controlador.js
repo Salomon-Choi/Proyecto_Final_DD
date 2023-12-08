@@ -16,6 +16,10 @@ module.exports = function(dbInyectada){
     function uno(id){
         return db.uno(TABLA, id);
     }
+
+    function porcategoria(categoria){
+        return db.porcategoria(TABLA, categoria);
+    }
     
     function eliminar(body){
         return db.eliminar(TABLA, body);
@@ -30,5 +34,6 @@ module.exports = function(dbInyectada){
         uno,
         agregar,
         eliminar,
+        porcategoria,
     }
 }

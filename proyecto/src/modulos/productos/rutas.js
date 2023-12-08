@@ -15,14 +15,34 @@ router.post('/',seguridad(), agregar);
 
 //funciones
 async function todos(req,res, next){
-    try {
-        const items = await controlador.todos()
-        .then((items)=>{
-        respuesta.success(req, res, items, 200)
-            })
-    } catch (error) {
-        next(error);
+
+    const {categoria} = req.query
+    console.log(categoria)
+
+    if(categoria){
+        //filtrar por categoria
+
+        try {
+            const items = await controlador.porcategoria(categoria)
+            .then((items)=>{
+            respuesta.success(req, res, items, 200)
+                })
+        } catch (error) {
+            next(error);
+        }
+
+    }else{
+
+        try {
+            const items = await controlador.todos()
+            .then((items)=>{
+            respuesta.success(req, res, items, 200)
+                })
+        } catch (error) {
+            next(error);
+        }
     }
+    
 
 }
 
